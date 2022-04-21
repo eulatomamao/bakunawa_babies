@@ -51,6 +51,7 @@ void loop() {
     if(pot1State == HIGH && pot2State == HIGH && pot3State == HIGH && pot4State == HIGH) {
       dragonServo.detach(); //dragon stops
       moonServo.detach(); //moon stays
+      Serial.println("THEY'RE ALL ON!!! WOOOOOOOOOO!!!!");
     }
     else { //bit scuffed, it doesn't loop between going left and going right 
       dragonServo.write(180, 10); //dragon keeps going
@@ -58,7 +59,21 @@ void loop() {
       dragonServo.write(0, 10);
     }
     if(pot1State == HIGH || pot2State == HIGH || pot3State == HIGH || pot4State == HIGH) {
-      dragonServo.write(20, 30); //extra wiggles
+      Serial.println("at least one of 'ems on");
+      dragonServo.write(20, 30); //extra wiggles?
+    }
+    //individual pot tests
+    if(pot1State == HIGH) {
+      Serial.println("pot 1 is on");
+    }
+    if(pot2State == HIGH) {
+      Serial.println("pot 2 is on");
+    }
+    if(pot3State == HIGH) {
+      Serial.println("pot 3 is on");
+    }
+    if(pot4State == HIGH) {
+      Serial.println("pot 4 is on");
     }
   }
   if(beginDiorama = LOW) {  //supposed to be the reset but the dial doesn't "work" (like it turns on, but doesnt stay on) unless you weigh it down a bit
